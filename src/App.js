@@ -1,13 +1,19 @@
-import "./App.css";
-import HomePage from "./pages/homepage/homepage.component";
-import { Route, Routes, Navigate } from "react-router-dom";
-import ShopPage from "./pages/shop/shop.component";
-import Header from "./components/header/header.component";
-import SignInSignUpPage from "./pages/sign-in-and-sign-out/sign-in-and-sign-out.component";
-import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import React from "react";
+import { auth, createUserProfileDocument } from "./firebase/firebase.util";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+
+import ShopPage from "./pages/shop/shop.component";
+import SignInSignUpPage from "./pages/sign-in-and-sign-out/sign-in-and-sign-out.component";
+import HomePage from "./pages/homepage/homepage.component";
+import CheckoutPage from "./pages/check-out/check-out.component";
+
+import Header from "./components/header/header.component";
+
 import { setCurrentUser } from "./redux/user/user.action";
+
+import "./App.css";
+
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -38,6 +44,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route
             exact
             path="/signin"
